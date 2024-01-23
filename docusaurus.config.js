@@ -32,7 +32,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js')
+          sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/'
         },
         blog: {
           showReadingTime: true
@@ -41,7 +42,7 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
-    ],
+    ]
   ],
 
   themeConfig:
@@ -51,7 +52,7 @@ const config = {
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
         defaultMode: "dark",
-        disableSwitch: false,
+        disableSwitch: true,
       },
       navbar: {
         title: 'Rocket',
@@ -97,12 +98,12 @@ const config = {
                 href: 'https://www.linkedin.com/company/imdeepmind-org',
               },
               {
-                label: 'Community',
+                label: 'GitHub Discussion',
                 href: 'https://github.com/imdeepmind/Rocket/discussions',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/imdeepmind',
+                label: 'Discord Server',
+                href: 'https://discord.gg/NR2zfyR2',
               },
             ],
           },
