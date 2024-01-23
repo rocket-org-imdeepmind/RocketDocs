@@ -1,0 +1,31 @@
+---
+title: Introduction
+sidebar_position: 1
+---
+
+In Rocket, databases serve as the foundation for your project. They house your tables, data, and APIs. This documentation will guide you through managing your databases effectively.
+
+## Creating a New Database
+
+Click [here](/docs/get-started/database) to check the docs for creating new database.
+
+## Managing Existing Databases
+
+After creating databases, you can manage them effectively:
+
+- **Delete Database**: If you no longer need a database, you can delete it. Click the "Delete Database" button on the dashboard. Be cautious, as this action is irreversible. Confirm the deletion to remove the database from your project.
+
+- **Selecting Database**: To select a database, click the top right corner dropdown. Select the database you want. Once you select a database, Rocket with show all data (tables, data, apis) for the that database.
+
+- **Table Management**: Within each database, you can create and manage tables to structure your data efficiently.
+
+- **Data Management**: Populate your tables with data and manage the data within the database.
+
+## Field Validations
+
+| Field    | Data Type | Min Length | Max Length | Default |
+| -------- | --------- | ---------- | ---------- | ------- |
+| name     | String    | 2          | 25         | -       |
+| version  | String    | 2          | 25         | v1.0.0  |
+| subtitle | String    | 5          | 255        | -       |
+| tags     | String[]  | 2          | 25         | -       |
