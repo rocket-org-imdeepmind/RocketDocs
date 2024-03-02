@@ -78,15 +78,15 @@ const config = {
             items: [
               {
                 label: 'Get Started',
-                to: '/docs/get-started/introduction',
+                to: '/',
               },
               {
                 label: 'Database',
-                to: '/docs/databases/introduction',
+                to: '/database/introduction',
               },
               {
                 label: 'Table',
-                to: '/docs/tables/introduction',
+                to: '/table/introduction',
               },
             ],
           },

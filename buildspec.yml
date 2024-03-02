@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+
+  build:
+    commands:
+      - echo "Building RocketDocs application..."
+      - npm run build
+
+  post_build:
+    commands:
+      - echo "Copying build files to S3..."
+      - aws s3 cp --recursive --acl public-read ./build s3://rocket-help-web/
