@@ -3,4 +3,42 @@ title: Introduction
 sidebar_position: 1
 ---
 
-# Introduction
+# Overview of Databases
+
+In the realm of Rocket, databases serve as the foundation of projects, encompassing a diverse array of elements, including tables, data, APIs, and their respective documentation.
+
+Let's explore the essential functionalities and features of databases within Rocket:
+
+## Understanding the Database Dashboard
+
+The Database Dashboard comprises four key components:
+
+<img src="/img/actions.gif" alt="Space Shuttle" width="100%" />
+
+- **Database Details**: Displays fundamental information about the database.
+- **Database Actions**: Provides action buttons for database management, including options for locking/unlocking, selecting, editing, and deleting databases.
+- **Database Usage Chart**: Illustrates database usage through three distinct charts, representing total table usage, total data usage, and overall database usage.
+- **Database Usage**: Presents an overview of database usage in percentage.
+
+## Database Operations
+
+- **Creating Databases**: Refer to the documentation on [Creating Databases](https://help.rocketapi.net/get-started/creating-database) for detailed instructions.
+- **Editing Databases**: Access guidance on [Editing Databases](https://help.rocketapi.net/database/editing-database) to learn about modifying database configurations.
+- **Deleting Databases**: Follow the instructions outlined in [Deleting Databases](https://help.rocketapi.net/database/deleting-database) to remove databases from your Rocket account.
+
+## Attribute Rules
+
+The table below outlines the attribute rules for database configuration:
+
+| Field             | Description                                  | Data Type  | Minimum Length | Maximum Length | Valid Options                                                                     | Default Value | Is Optional | Extra Details                        |
+| ----------------- | -------------------------------------------- | ---------- | -------------- | -------------- | --------------------------------------------------------------------------------- | ------------- | ----------- | ------------------------------------ |
+| Name              | Name of the Database                         | string     | 2              | 25             | -                                                                                 | -             | No          | -                                    |
+| Description       | Description of the Database                  | large-text | 2              | 255            | -                                                                                 | -             | No          | -                                    |
+| Tags              | Tags for categorizing databases              | string[]   | 2              | 25             | -                                                                                 | -             | No          | Minimum 1 tag, maximum 5 tags        |
+| Version           | Version of the database                      | string     | 2              | 25             | -                                                                                 | -             | No          | -                                    |
+| Stage             | Stage of the database                        | string     | -              | -              | 'string', 'number', 'boolean', 'large-text', 'array', 'enum', 'date', 'date-time' | -             | No          | -                                    |
+| Enable Basic Auth | Enable basic authentication for the database | boolean    | -              | -              | true, false                                                                       | -             | No          | -                                    |
+| Username          | Username for database access                 | string     | 2              | 25             | -                                                                                 | -             | Yes         | Mandatory when basic auth is enabled |
+| Password          | Password for database access                 | string     | 2              | 25             | -                                                                                 | -             | Yes         | Mandatory when basic auth is enabled |
+
+These attribute rules provide comprehensive guidelines for configuring databases within Rocket.
