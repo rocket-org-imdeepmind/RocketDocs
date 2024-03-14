@@ -1450,7 +1450,7 @@
     "@docusaurus/utils-validation" "3.1.1"
     tslib "^2.6.0"
 
-"@docusaurus/plugin-sitemap@3.1.1":
+"@docusaurus/plugin-sitemap@^3.1.1", "@docusaurus/plugin-sitemap@3.1.1":
   version "3.1.1"
   resolved "https://registry.npmjs.org/@docusaurus/plugin-sitemap/-/plugin-sitemap-3.1.1.tgz"
   integrity sha512-iJ4hCaMmDaUqRv131XJdt/C/jJQx8UreDWTRqZKtNydvZVh/o4yXGRRFOplea1D9b/zpwL1Y+ZDwX7xMhIOTmg==
