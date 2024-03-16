@@ -1,6 +1,60 @@
 ---
 title: Understanding Attributes
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Understanding Attributes
+
+Attributes are pivotal to Rocket's functionality, dictating API creation and defining operational behavior. Rocket offers support for a diverse array of attributes, facilitating nuanced API design and management.
+
+## Data Types Supported by Attributes
+
+Rocket accommodates various data types to cater to diverse application requirements:
+
+| Data Type  | Description                                                                                                                             | Length Constraints                         |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Integer    | This data type facilitates the storage of numeric values, encompassing both positive and negative integers, as well as decimal numbers. |                                            |
+| Boolean    | Boolean values, representing "true" and "false," find a place within this data type's domain.                                           |                                            |
+| String     | Simple text strings are accommodated, with optional length constraints for precision.                                                   | Min Length: 0, Max Length: 255             |
+| Large-Text | For extensive textual content, this data type provides support, with optional length restrictions for tailored storage solutions.       | Min Length: 0, Max Length: 4096            |
+| Array      | Arrays enable the storage of multiple items within a single attribute.                                                                  | Min Array Length: 0, Max Array Length: 100 |
+| Enum       | A specialized data type that allows variables to hold predefined constants, enhancing code clarity and organization.                    |                                            |
+| Date       | Date data type offers support for storing date values.                                                                                  |                                            |
+| Date-Time  | This data type extends support to date and time values, facilitating comprehensive temporal data handling.                              |                                            |
+
+## Optional and Unique Attribute Considerations
+
+Attributes within Rocket can be designated as optional or unique, influencing their behavior:
+
+- **Optional Attributes**: When marked as optional, attributes accept null values.
+- **Unique Attributes**: Marking an attribute as unique ensures that only distinct values are accepted, preventing duplication.
+
+## Attribute Operations
+
+### Indexable Attributes
+
+Designating an attribute as indexable empowers Rocket to automatically generate APIs for data retrieval based on that attribute. In cases where the attribute isn't unique, multiple data rows may be retrieved.
+
+For example, if "id" serves as an indexable attribute within a table, Rocket generates an API endpoint as `/\\{databaseId}/\\{tableId}/\id/\\{attributeValue}`.
+
+### Searchable Attributes
+
+Attributes marked as searchable prompt Rocket to create APIs facilitating data searches using the specified attribute.
+
+For instance, selecting the "name" attribute results in an API endpoint of the format `/databaseId/tableId/search/name?query=\{attributeValue}`, allowing for targeted data searches.
+
+### Sortable Attributes
+
+Attributes identified as sortable enable data sorting functionalities within Rocket. This inclusion prompts the addition of optional sorting query parameters to all generated GET APIs.
+
+### Editable Attributes
+
+Determining if an attribute can be utilized for data updating, the editable attribute's presence influences API generation. In cases where uniqueness isn't assured, updates may affect multiple data rows.
+
+APIs are structured as follows: `PUT /\\{databaseId}/\\{tableId}/\\{attributeName}/\\{attributeValue}`.
+
+### Deletable Attributes
+
+Indicating whether an attribute can be employed for data deletion, the deletable attribute plays a pivotal role in API construction. Should uniqueness not be guaranteed, deletions may impact multiple data rows.
+
+APIs adhere to the format: `DELETE /\\{databaseId}/\\{tableId}/\\{attributeName}/\\{attributeValue}`.
