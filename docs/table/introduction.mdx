@@ -3,4 +3,43 @@ title: Introduction
 sidebar_position: 1
 ---
 
-# Introduction
+# Table Management Overview
+
+Tables serve as the foundation of your Rocket database, providing structure and organization to your data. This documentation offers comprehensive guidance on efficient table management practices.
+
+In Rocket, each database comprises multiple tables, each defining the structure of data and specifying operations to be executed. For example, in a blogging platform, tables such as 'Users' and 'Posts' are typical. The 'Users' table stores user information, while the 'Posts' table manages blog post data.
+
+Within each table, various attributes (akin to columns in relational databases) can be defined, each supporting specific operations. For instance, in the 'Users' table, attributes like 'id', 'name', and 'bio' may exist. The 'id' attribute, for instance, can be designated as unique, indexable, editable, and deletable, enabling it to uniquely identify data, serve as an index for retrieval and deletion, and allow for modification. Similarly, attributes like 'name' can be marked as searchable and sortable, facilitating efficient data retrieval and organization.
+
+Rocket leverages these attribute configurations to automatically generate RESTful APIs, streamlining data interaction processes.
+
+## Table Operations
+
+- **Creating Tables**: Refer to the [Creating Tables](https://help.rocketapi.net/table/creating-table) documentation for detailed instructions.
+- **Editing Tables**: Access guidance on [Editing Tables](https://help.rocketapi.net/table/editing-table) to modify table configurations effectively.
+- **Deleting Tables**: Follow the outlined instructions in [Deleting Tables](https://help.rocketapi.net/table/deleting-table) to remove tables from the database.
+- **Adding Attributes**: Detailed instructions for adding attributes can be found in the [Adding Attributes](https://help.rocketapi.net/table/adding-attributes) documentation.
+- **Editing Attributes**: Learn about editing table attributes through the guidance provided in [Editing Attributes](https://help.rocketapi.net/table/editing-attributes).
+- **Deleting Attributes**: Remove table attributes using the instructions outlined in [Deleting Attributes](https://help.rocketapi.net/table/deleting-attributes).
+
+## Field Rules
+
+The following table outlines the field rules for configuring tables:
+
+| Field                 | Description                    | Data Type  | Minimum Length | Maximum Length | Valid Options                                                                     | Default Value | Is Optional | Extra Details                                                                   |
+| --------------------- | ------------------------------ | ---------- | -------------- | -------------- | --------------------------------------------------------------------------------- | ------------- | ----------- | ------------------------------------------------------------------------------- |
+| Name                  | Table Name                     | string     | 2              | 25             | -                                                                                 | -             | No          | -                                                                               |
+| Description           | Table Description              | large-text | 2              | 255            | -                                                                                 | -             | No          | -                                                                               |
+| Attribute.Name        | Attribute Name                 | string     | 2              | 25             | -                                                                                 | -             | No          | -                                                                               |
+| Attribute.Description | Attribute Description          | large-text | 2              | 255            | -                                                                                 | -             | No          | -                                                                               |
+| Attribute.Data Type   | Attribute Data Type            | string     | -              | -              | 'string', 'number', 'boolean', 'large-text', 'array', 'enum', 'date', 'date-time' | -             | No          | -                                                                               |
+| Attribute.Enum Values | Enum Values for Enum Data Type | string[]   | 2              | 25             | -                                                                                 | -             | Yes         | Minimum 1 enum value, maximum 5 enum values. Mandatory when data type is 'enum' |
+| Attribute.Optional    | Optional Field Indicator       | boolean    | -              | -              | true, false                                                                       | false         | No          | -                                                                               |
+| Attribute.Unique      | Unique Field Indicator         | boolean    | -              | -              | true, false                                                                       | false         | No          | -                                                                               |
+| Attribute.Indexable   | Indexable Field Indicator      | boolean    | -              | -              | true, false                                                                       | false         | No          | -                                                                               |
+| Attribute.Searchable  | Searchable Field Indicator     | boolean    | -              | -              | true, false                                                                       | false         | No          | -                                                                               |
+| Attribute.Sortable    | Sortable Field Indicator       | boolean    | -              | -              | true, false                                                                       | false         | No          | -                                                                               |
+| Attribute.Editable    | Editable Field Indicator       | boolean    | -              | -              | true, false                                                                       | false         | No          | -                                                                               |
+| Attribute.Deletable   | Deletable Field Indicator      | boolean    | -              | -              | true, false                                                                       | false         | No          | -                                                                               |
+
+These field rules provide comprehensive guidelines for configuring tables and attributes within Rocket. For further information on attributes, refer to [Understanding Attributes](https://help.rocketapi.net/table/understading-attributes).

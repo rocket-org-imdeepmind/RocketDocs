@@ -22,23 +22,23 @@ The Database Dashboard comprises four key components:
 
 ## Database Operations
 
-- **Creating Databases**: Refer to the documentation on [Creating Databases](https://help.rocketapi.net/get-started/creating-database) for detailed instructions.
+- **Creating Databases**: Refer to the documentation on [Creating Databases](https://help.rocketapi.net/database/creating-database) for detailed instructions.
 - **Editing Databases**: Access guidance on [Editing Databases](https://help.rocketapi.net/database/editing-database) to learn about modifying database configurations.
 - **Deleting Databases**: Follow the instructions outlined in [Deleting Databases](https://help.rocketapi.net/database/deleting-database) to remove databases from your Rocket account.
 
-## Attribute Rules
+## Field Rules
 
-The table below outlines the attribute rules for database configuration:
+The table below outlines the field rules for database configuration:
 
-| Field             | Description                                  | Data Type  | Minimum Length | Maximum Length | Valid Options                                                                     | Default Value | Is Optional | Extra Details                        |
-| ----------------- | -------------------------------------------- | ---------- | -------------- | -------------- | --------------------------------------------------------------------------------- | ------------- | ----------- | ------------------------------------ |
-| Name              | Name of the Database                         | string     | 2              | 25             | -                                                                                 | -             | No          | -                                    |
-| Description       | Description of the Database                  | large-text | 2              | 255            | -                                                                                 | -             | No          | -                                    |
-| Tags              | Tags for categorizing databases              | string[]   | 2              | 25             | -                                                                                 | -             | No          | Minimum 1 tag, maximum 5 tags        |
-| Version           | Version of the database                      | string     | 2              | 25             | -                                                                                 | -             | No          | -                                    |
-| Stage             | Stage of the database                        | string     | -              | -              | 'string', 'number', 'boolean', 'large-text', 'array', 'enum', 'date', 'date-time' | -             | No          | -                                    |
-| Enable Basic Auth | Enable basic authentication for the database | boolean    | -              | -              | true, false                                                                       | -             | No          | -                                    |
-| Username          | Username for database access                 | string     | 2              | 25             | -                                                                                 | -             | Yes         | Mandatory when basic auth is enabled |
-| Password          | Password for database access                 | string     | 2              | 25             | -                                                                                 | -             | Yes         | Mandatory when basic auth is enabled |
+| Field             | Description                                  | Data Type  | Minimum Length | Maximum Length | Valid Options                        | Default Value | Is Optional | Extra Details                        |
+| ----------------- | -------------------------------------------- | ---------- | -------------- | -------------- | ------------------------------------ | ------------- | ----------- | ------------------------------------ |
+| Name              | Name of the Database                         | string     | 2              | 25             | -                                    | -             | No          | -                                    |
+| Description       | Description of the Database                  | large-text | 2              | 255            | -                                    | -             | No          | -                                    |
+| Tags              | Tags for categorizing databases              | string[]   | 2              | 25             | -                                    | -             | No          | Minimum 1 tag, maximum 5 tags        |
+| Version           | Version of the database                      | string     | 2              | 25             | -                                    | -             | No          | -                                    |
+| Stage             | Stage of the database                        | string     | -              | -              | 'dev', 'qa', 'test', 'prod', 'stage' | -             | No          | -                                    |
+| Enable Basic Auth | Enable basic authentication for the database | boolean    | -              | -              | true, false                          | -             | No          | -                                    |
+| Username          | Username for database access                 | string     | 2              | 25             | -                                    | -             | Yes         | Mandatory when basic auth is enabled |
+| Password          | Password for database access                 | string     | 2              | 25             | -                                    | -             | Yes         | Mandatory when basic auth is enabled |
 
-These attribute rules provide comprehensive guidelines for configuring databases within Rocket.
+These field rules provide comprehensive guidelines for configuring databases within Rocket.
