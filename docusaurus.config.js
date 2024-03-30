@@ -111,7 +111,7 @@ const config = {
               },
               {
                 label: 'Discord Server',
-                href: 'https://discord.gg/NR2zfyR2',
+                href: 'https://discord.gg/egHFpRNQ',
               },
             ],
           },
