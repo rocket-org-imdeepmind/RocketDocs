@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo "Installing dependencies..."
-      - npm ci --force
+      - npm ci
 
   build:
     commands:

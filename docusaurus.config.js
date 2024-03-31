@@ -76,7 +76,7 @@ const config = {
         ],
       },
       announcementBar: {
-        content: 'Documentation is not complete for Rocket. We\' actively working on the documentation.'
+        content: 'Documentation is not complete for Rocket. We\'re actively working on the documentation.'
       },
       footer: {
         style: 'dark',
