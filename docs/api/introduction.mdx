@@ -4,3 +4,21 @@ sidebar_position: 1
 ---
 
 # Introduction
+
+Now that you have defined the table structure, operations, and added data, Rocket automatically generates APIs for your database based on all the tables, attributes within those tables, and the operations specified on those attributes. Additionally, Rocket generates basic documentation for these APIs, derived from the details provided during database, table, and attribute creation.
+
+While Rocket generates basic documentation, it is essential to review and enhance the documentation on the APIs page to improve comprehension and foster better collaboration.
+
+## API Operations
+
+- **Documenting APIs**: Refer to the documentation on [documenting APIs](https://help.rocketapi.net/api/documenting-apis) to understand the process for documenting APIs effectively.
+- **Swagger and Redoc**: Explore the documentation on [Swagger and Redoc](https://help.rocketapi.net/api/swagger-redoc) to learn more about these tools and how to utilize them efficiently.
+
+## Field Rules
+
+The following table outlines the field rules for documenting apis:
+
+| Field       | Description     | Data Type  | Minimum Length | Maximum Length | Valid Options | Default Value | Is Optional | Extra Details |
+| ----------- | --------------- | ---------- | -------------- | -------------- | ------------- | ------------- | ----------- | ------------- |
+| Title       | API Title       | string     | 2              | 25             | -             | -             | No          | -             |
+| Description | API Description | large-text | 2              | 255            | -             | -             | No          | -             |
