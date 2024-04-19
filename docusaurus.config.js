@@ -5,7 +5,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Rocket: Create Backend APIs With Ease',
+  title: 'Rocket: The Perfect No-Code Backend Builder for POCs and MVPs',
   tagline: 'Documentation for Rocket',
   favicon: 'img/favicon.ico',
 
