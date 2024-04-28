@@ -1,92 +1,74 @@
 ---
 slug: introduction
-title: "Introducing Rocket: Create Backend APIs With Ease"
+title: "Introducing Rocket"
 authors: [abhishek]
 tags: [rocket, introduction]
 ---
 
-In the ever-evolving world of technology, time is of the essence. Whether you're an entrepreneur, a developer, or simply someone with a brilliant idea, the process of creating backend APIs for Proof of Concepts (POCs) can be a significant roadblock. Hours turn into days, and days into weeks, as coding complexities pile up.
+Approximately a year ago, I was working on a project to develop a Proof of Concept (POC) for my employer in the healthcare sector. This POC revolved around addressing [HEDIS measures](https://www.ncqa.org/hedis), presenting a simplified dashboard to visualize healthcare data. The POC was simple and for the POC, I developed a straightforward authentication system and a set of APIs to support the dashboard's functionality.
 
-Furthermore, APIs that were once perfectly suited for your project might need adjustments or enhancements as your project evolves. The pain point here lies in the difficulty of making these changes to existing APIs, often requiring extensive coding and testing all over again.
+<img src="/img/introducing-rocket.gif" />
 
-But what if we told you there's a solution that can create powerful backend APIs without a single line of code? Enter **Rocket**, your ultimate platform for effortless API creation.
+While I was working on this project, the concept of Rocket began to take shape in my mind. For a variety of projects and POCs, I create a lot of APIs that to some extent do the same thing. Sometimes for these projects, I even copy code from my old project to new project just to some save time. Imagine a platform capable of effortlessly generating APIs for similar projects without the need for manual coding. All that would be required is to define the data structure and necessary operations, and Rocket would handle the rest automatically.
 
-<img src="/img/space_shuttle.gif" alt="Space Shuttle" width="100%" />
+Initially, my vision for Rocket was modest: to create an alternative to [JSONPlaceholder](https://jsonplaceholder.typicode.com/), offering dynamic JSON data through simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) APIs. However, as development progressed, Rocket rapidly evolved beyond these initial aspirations. It transformed into a comprehensive no-code platform, empowering users to construct sophisticated backend systems tailored to a diverse array of use cases.
 
-## Introducing rocket
+## Identifying the Challenge
 
-Rocket is a revolutionary platform that empowers you to create APIs automatically, without the need for any coding expertise. Imagine a world where you can effortlessly bring your ideas to life, swiftly transforming them into functional backend APIs. With Rocket, that world is now a reality.
+Before delving into Rocket's capabilities, it's crucial to grasp the problem it aims to solve.
 
-Rocket isn't just a solution; it's a transformative tool designed to accelerate your journey from idea to prototype. Rocket provides you with all the necessary tools and features needed for you to make your idea into reality.
+In today's landscape, merely conceptualizing an idea is insufficient. Transforming that idea into a functional Proof of Concept (POC) holds enormous importance. POCs serve not only to validate initial concepts but also to demonstrate viability of the idea to potential users, investors, and other stakeholders. Refer to [this article](https://lucidspark.com/blog/proof-of-concept) for insights into the significance of POCs, MVPs, and prototypes in product development and market research.
+
+However, developing such POCs present a significant challenge. The iterative nature of POC development, characterized by frequent incremental changes, can render the development process cumbersome. Moreover, for many POCs, the primary backend functionality revolves around basic data operations such as searching, fetching, and inserting.
+
+### Leveraging No-Code in Prototyping
+
+Utilizing No-Code or Low-Code platforms for developing functional prototypes or MVPs or POCs can significantly improve the development timelines. These platforms offer a ray of hope for swiftly experimenting with ideas and features, bypassing the potential weeks or months typically required for traditional development. Moreover, incremental changes are extremely simple to implement and test.
+
+For a deeper understanding of the role of No-Code platforms in prototyping, explore [this article](https://www.linkedin.com/pulse/revolutionizing-development-low-code-vs-no-code-rapid-maria-naranjo-9nlac/).
+
+## Say Hello to Rocket
+
+Rocket is a No-Code platform that make building complex backend applications absolutely easy. Rocket provide a multitude of features to build complex backends simple and efficient. Starting from a powerful authentication system to generating APIs automatically to documenting APIs, Rocket can do most of the things a powerful backend system need.
+
+> Rocket currently is a No-Code platform, however with introduction on RocketFunctions, Rocket will be more like a Low-Code platform. Check the [roadmap](https://rocket-roadmap.notion.site/d42fc3f1823f426bbe3f62cafbdb5189?v=6e9bd7ad1d0d40d3a795a0b41f0d0ec0) for more information on RocketFunctions.
+
+Let's dive deeper into some of the features of Rocket.
 
 ### Swift and Simple API Creation
 
-At the heart of Rocket's innovation is the remarkable speed and simplicity it brings to API creation. Picture this: You no longer need to be a coding virtuoso to develop robust backend APIs. With Rocket, the process is transformed into a straightforward, intuitive experience. Just share your data requirements and the necessary data operations with Rocket, and watch as it magically constructs your APIs.
+At the heart of Rocket's innovation is the remarkable speed and simplicity it brings to backend systems. Picture this: You no longer need to be a coding ninja to develop robust backend APIs. With Rocket, the process is transformed into a straightforward, intuitive experience.
+
+In Rocket, you just need to tell the structure of the data that you need to store by defining tables (tables in Rocket is similar to tables in SQL database), and the particular operations needed on the data. Rocket will automatically create the needed APIs for the backend system.
+
+For example, you if you name column inside a particular table as searchable, Rocket will automatically create API to search names.
 
 ### Flexibility and Adaptability
 
-The dynamic nature of software development demands flexibility. This is where Rocket shines brightest. Not only does it accelerate initial API creation, but it also ensures that your APIs remain adaptable and can evolve with your project's changing needs. Modifications and enhancements are a breeze with Rocket's user-friendly interface, sparing you the hassle of rewriting code from scratch.
+The dynamic nature of prototypes demands flexibility. Any POCs or MVPs go through hundreds of iteration. All these iteration requires constant incremental changes. This is where Rocket shines brightest.
 
-### Integrated Data Management
+Rocket's no-code platform make these incremental changes simple and easy to make. Just with few clicks any features can be added/updated. There is no need to worry about breaking changes and testing the entire backend system after every new change.
 
-Rocket is more than just an API creation tool; it's a comprehensive solution. It seamlessly integrates a powerful database system, simplifying data storage and retrieval. Say goodbye to the complexities of database management; Rocket handles it all, so you can focus on what truly matters – building and refining your application.
+### Authentication System
 
-### Fake Data Generation
+Most modern application need a powerful authentication and authorization system. Ability to identity user and provide content based on the user is something that is expected from variety of applications.
 
-Rocket provides an easy system to create realistic fake data, so while making APIs, you don't need to think about data.
+Rocket provides a powerful authentication system similar to [Firebase Auth](https://firebase.google.com/docs/auth) that can be used to create complete authentication system. Rocket will automatically create the needed APIs for the authentication system. Moreover, Rocket also provides a simple dashboard to manage all the users.
 
-### Swagger Integration
+### API Documentation
 
-Effective collaboration and documentation are at the core of every successful project. With Rocket's seamless integration of OpenAPI and Swagger, describing, documenting, and visualizing your APIs is a breeze. Foster understanding and teamwork among your colleagues while Rocket takes care of the technicalities.
+Creating API is just one part of the equation, to facilitate better collaboration between multiple teams, documenting the APIs is also equally important. Rocket provide first class support for OpenAPI documentation for the APIs. WIth the power of OpenAPI, Rocket automatically generate Swagger, Redoc, and Scaler documentation.
 
 ### Effortless Integration
 
-Rocket doesn't operate in isolation. It's designed to seamlessly integrate with various backend services, reducing complexity and boosting the efficiency of your POC development cycle. Rocket is your gateway to a harmonious tech ecosystem.
+Sometimes some complex backend applications come with some business logic that cannot be implemented with a no-code platform like Rocket. For example, if you're building a backend service that uses a ML model, then of course, Rocket cannot create the model for you.
 
-## Exploring the Rocket Workflow
+This is where third-party integration comes into play. Rocket doesn't operate in isolation. It's designed to seamlessly integrate with various backend services. Rocket provide s both APIs and webhooks for third-party integration.
 
-When you step into the world of Rocket, you'll find that the process of creating APIs is refreshingly simple and efficient. It all starts with a well-structured workflow designed to get you up and running swiftly.
+In your ML based service, the ML model can be used easily with Rocket. So in other terms Rocket can be used to build create all the boring APIs needed to your backend service, so you can focus on building fun part, that is the ML model.
 
-### Crafting the Foundation: Database
+## Why limited to POCs and MVPs?
 
-Your journey begins by laying the foundation for your project – the database. Think of it as the canvas on which your application's masterpiece will be painted. Each project ideally has its own database. To create one, you need only provide a name, description, version, and tags. With these details, you set the stage for all that's to come.
+## What's next?
 
-### Designing the Blueprint: Tables
-
-With your database in place, the next step is to define the structure of your data and the specific operations you require. Tables are the blueprints for your data architecture. You can create as many tables as your project demands, tailoring each one to serve a distinct purpose.
-
-### Infusing Life: Data
-
-Tables now await their stories. During the creation of these tables, you've already outlined the structure and defined the necessary operations. It's time to breathe life into your project by adding data. You can choose to do this manually, carefully curating your dataset, or utilize the Rocket Fake Data Generation tool for quick and realistic data creation.
-
-### Building Connections: APIs
-
-With data in place, the focus shifts to the APIs that will bridge the gap between your application and its users. It's imperative to ensure that all required APIs are not only generated but also well-documented. These APIs are the heart of your project, facilitating interaction with your data.
-
-### Exploring Functionality: Swagger
-
-To gain a deeper understanding of the purpose and functionality of your APIs, you can turn to Swagger. This powerful tool allows you to interact with your APIs, testing their capabilities and exploring their functionality. Additionally, Rocket provides OpenAPI documentation, simplifying integration with various platforms and making your APIs accessible to a wider audience.
-
-In essence, Rocket's workflow is a streamlined process that empowers you to bring your projects to life efficiently. With its user-friendly approach and robust toolset, you can create databases, design data structures, infuse data, build APIs, and explore their functionalities seamlessly, all in one platform. So, whether you're embarking on a new project or experimenting a new idea, Rocket offers the tools, simplicity, and adaptability you need to make your vision a reality.
-
-## Starting Your Journey with Rocket
-
-Are you ready to launch your journey with our platform and effortlessly create APIs? Let's dive into the essential steps to help you get started:
-
-### Sign Up for an Account
-
-To embark on your exciting Rocket journey, the first step is to create an account. Simply visit our [Sign-Up Page](https://app.rocketapi.net/) and follow the straightforward registration process.
-
-### Explore Our Pricing
-
-Upon creating a Rocket account, the default selection is the Bronze plan, which is the free plan. If you're interested in exploring the different plans we offer and their pricing details, please visit our [Pricing Page](https://rocketapi.net/#pricing).
-
-### Familiarize Yourself with the Dashboard
-
-To gain a comprehensive understanding of Rocket and its full range of functionalities, we highly recommend checking out our detailed [Getting Started Guide](https://help.rocketapi.net/docs/get-started/introduction).
-
-### Discussion Forum
-
-If you are stuck somewhere, feel free to raise a ticket [here](https://github.com/imdeepmind/Rocket/discussions). We'll try to respond as fast as possible.
-
-Now, armed with the knowledge to navigate Rocket's powerful tools, you're ready to embark on your exciting journey. Let's dive in and begin crafting exceptional APIs that will propel your projects to new heights!
+## Useful links
