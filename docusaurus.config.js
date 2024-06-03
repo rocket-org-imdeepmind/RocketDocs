@@ -35,9 +35,6 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/'
         },
-        blog: {
-          showReadingTime: true
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -72,7 +69,7 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: 'https://blog.rocketapi.net/', label: 'Blog', position: 'left'},
         ],
       },
       announcementBar: {
@@ -120,7 +117,7 @@ const config = {
             items: [
               {
                 label: 'Blog',
-                to: '/blog',
+                to: 'https://blog.rocketapi.net/',
               },
               {
                 label: 'GitHub',
