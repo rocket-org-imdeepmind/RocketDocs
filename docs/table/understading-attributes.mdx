@@ -11,16 +11,16 @@ Attributes are pivotal to Rocket's functionality, dictating API creation and def
 
 Rocket supports various data types to cater to diverse application requirements:
 
-| Data Type  | Description                                                                                                                             | Length Constraints                         |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Integer    | This data type facilitates the storage of numeric values, encompassing both positive and negative integers, as well as decimal numbers. |                                            |
-| Boolean    | Boolean values, representing "true" and "false,"                                                                                        |                                            |
-| String     | Simple text strings, with length constraints for validation.                                                                            | Min Length: 0, Max Length: 255             |
-| Large-Text | For extensive textual content, with length restrictions for validation.                                                                 | Min Length: 0, Max Length: 4096            |
-| Array      | Arrays enable the storage of multiple items within a single attribute.                                                                  | Min Array Length: 0, Max Array Length: 100 |
-| Enum       | A specialized data type that allows variables to hold predefined constants.                                                             |                                            |
-| Date       | Date data type offers support for storing date values.                                                                                  |                                            |
-| Date-Time  | Date-Time type support both date and time values.                                                                                       |                                            |
+| Data Type  | Description                                                                                                           | Length Constraints                         |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Number     | Number data type supports both integer and floating point numbers.                                                    |                                            |
+| Boolean    | Boolean values, representing "true" and "false,"                                                                      |                                            |
+| String     | Simple text strings, with length constraints for validation.                                                          | Min Length: 0, Max Length: 255             |
+| Large-Text | For extensive textual content, with length restrictions for validation.                                               | Min Length: 0, Max Length: 4096            |
+| Array      | Arrays enable the storage of multiple items within a single attribute. Array items can be of any data type.           | Min Array Length: 0, Max Array Length: 100 |
+| Enum       | A specialized data type that allows variables to hold predefined constants. Only string values are supported in Enum. |                                            |
+| Date       | Date data type offers support for storing date values.                                                                |                                            |
+| Date-Time  | Date-Time type support both date and time values.                                                                     |                                            |
 
 ## Optional and Unique Attribute Considerations
 
@@ -39,19 +39,49 @@ For example, if "id" serves as an indexable attribute within a table, Rocket gen
 
 ### Searchable Attributes
 
-Attributes marked as searchable prompt Rocket to create APIs facilitating data searches using the specified attribute.
+When attributes are marked as searchable, Rocket will create APIs for data searches using the specified attribute.
 
 For instance, selecting the "name" attribute results in an API endpoint of the format `/{databaseId}/{tableId}/search/name?query={attributeValue}`, allowing for targeted data searches.
 
 ### Sortable Attributes
 
-Attributes identified as sortable enable data sorting functionalities within Rocket. This inclusion prompts the addition of optional sorting query parameters to all generated GET APIs.
+When attributes identified as sortable, Rocket will add an optional sorting query parameter in all `GET` APIs.
+
+For example, if name attribute is marked as sortable, then rocket will create endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?sortByName={asc|desc}`.
+
+### Less Than
+
+When LessThan flag is enabled for a attribute, an optional query parameter is added that to all `GET` APIs.
+
+For example, if for age attribute, lessThan operation is enabled, then rocket will create endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?lessThanAge={attributeValue}`.
+
+### Less Than Equal
+
+When LessThanEqual flag is enabled for a attribute, an optional query parameter is added that to all `GET` APIs.
+
+For example, if for age attribute, lessThanEqual operation is enabled, then rocket will create endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?lessThanEqualAge={attributeValue}`.
+
+### Greater Than
+
+When GreaterThan flag is enabled for a attribute, an optional query parameter is added that to all `GET` APIs.
+
+For example, if for age attribute, greaterThan operation is enabled, then rocket will create endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?greaterThan={attributeValue}`.
+
+### Greater Than Equal
+
+When GreaterThanEqual flag is enabled for a attribute, an optional query parameter is added that to all `GET` APIs.
+
+For example, if for age attribute, greaterThanEqual operation is enabled, then rocket will create endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?greaterThanEqual={attributeValue}`.
+
+### Equal
+
+### One Of
 
 ### Editable Attributes
 
-Determining if an attribute can be utilized for data updating, the editable attribute's presence influences API generation. In cases where uniqueness isn't assured, updates may affect multiple data rows.
+When marked as editable, Rocket will create API to update data where this attribute value will be used to find the desired records.
 
-APIs are structured as follows: `PUT /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
+For example, if name attribute is marked as editable, then Rocket will create an endpoint as `PUT /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
 
 ### Deletable Attributes
 
