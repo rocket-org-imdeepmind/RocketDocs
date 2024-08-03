@@ -5,44 +5,44 @@ sidebar_position: 2
 
 # Understanding Attributes
 
-Attributes are one of the most important concept to understand in Rocket. Similar to SQL tables, attributes also define the structure of table, but additionally it also defines operations needed on the attribute. For example, when you mark an attribute as searchable, Rocket automatically creates a search API.
+Attributes are one of the most important concepts to understand in Rocket. Like SQL tables, attributes define the structure of tables and the operations needed for the attribute. For example, when you mark an attribute as searchable, Rocket automatically creates a search API.
 
-Attributes support variety of configurations, see below to understand all possible configurations. The entire configuration is grouped into multiple sections similar to how it is grouped in the Rocket's UI so it is easy to follow.
+Attributes support various configurations. Below, you can see all the possible configurations. The configurations are grouped into sections similar to how they are organized in Rocket's UI, making them easy to follow.
 
 ## Basic Details
 
 ### Name
 
-Each attribute need to have an unique name. The name can be used for making the API url. Provide a simple name that follows Rocket's [entity](/misc#entity-names) name rules.
+Each attribute needs a unique name. This name can be used to create the API URL. Make sure to provide a simple name that follows Rocket's [entity](/misc#entity-names) name rules.
 
 ### Description
 
-Each attribute need to have a description. The description is used for documenting the API.
+Each attribute needs a description. This description is used for documenting the API.
 
 ## Data Type
 
 ### Data Type
 
-Every attribute needed to be one of data types supported by Rocket. Based on the data type, only certain types of data can be added and only certain operations are allowed.
+Every attribute needs to be one of the data types supported by Rocket. Based on the data type, only certain types of data can be added and only certain operations are allowed.
 
-Following are the supported data types supported by Rocket:
+The following are the data types supported by Rocket:
 
-| Data Type  | Description                                                                                                           | Constraints                                |
-| ---------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Number     | Number data type supports both integer and floating point numbers.                                                    | -                                          |
-| Boolean    | Boolean values, representing "true" and "false,"                                                                      | -                                          |
-| String     | Simple text strings, with length constraints for validation.                                                          | Min Length: 0, Max Length: 255             |
-| Large-Text | For extensive textual content, with length restrictions for validation.                                               | Min Length: 0, Max Length: 4096            |
-| Array      | Arrays enable the storage of multiple items within a single attribute. Array items can be of any data type.           | Min Array Length: 0, Max Array Length: 100 |
-| Enum       | A specialized data type that allows variables to hold predefined constants. Only string values are supported in Enum. | -                                          |
-| Date       | Date data type offers support for storing date values.                                                                | -                                          |
-| Date-Time  | Date-Time type support both date and time values.                                                                     | -                                          |
+| Data Type  | Description                                                                                                                                  | Constraints                                |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Number     | Number data type supports both integer and floating point numbers.                                                                           | -                                          |
+| Boolean    | Boolean values, representing "true" and "false."                                                                                             | -                                          |
+| String     | Simple text strings, with length constraints for validation.                                                                                 | Min Length: 0, Max Length: 255             |
+| Large-Text | For extensive textual content, with length restrictions for validation.                                                                      | Min Length: 0, Max Length: 4096            |
+| Array      | Arrays enable the storage of multiple items within a single attribute. Array items can be of any data type. Arrays can have mixed data type. | Min Array Length: 0, Max Array Length: 100 |
+| Enum       | A specialized data type that allows variables to hold predefined constants. Only string values are supported in Enum.                        | -                                          |
+| Date       | Date data type offers support for storing date values.                                                                                       | -                                          |
+| Date-Time  | Date-Time type supports both date and time values.                                                                                           | -                                          |
 
-When DataType is Enum, an additional field called Enum Values also needed to be filled which defines the possible values for the Enum.
+When the Data Type is Enum, an additional field called Enum Values also needs to be filled, which defines the possible values for the Enum.
 
 ### Optional
 
-When a field is marked as optional, it accept null values. Certain operations are disabled when attributes are marked as optional. Check documentation for each attribute operations to understand the impact.
+When a field is marked as optional, it accepts null values. Certain operations are disabled when attributes are marked as optional. Check the documentation for each attribute operation to understand the impact.
 
 :::info[Operation CheckList]
 
