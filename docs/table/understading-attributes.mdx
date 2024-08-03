@@ -327,14 +327,150 @@ For example, if `id` attribute is marked as deletable, then Rocket will create a
 
 ## Aggregate Functions
 
+Rocket supports multiple type of aggregate functions. These functions perform some calculation on multiple values and returns a computed value.
+
 ### Mean
+
+Based on a set of numbers, this aggregation function finds the [mean](https://en.wikipedia.org/wiki/Mean) of it.
+
+When Mean flag is enabled for an attribute, it adds mean value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
 
 ### Maximum
 
+Based on a set of numbers, this aggregation function finds the maximum value out the the set of numbers.
+
+When Maximum flag is enabled for an attribute, it adds maximum value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
 ### Minimum
+
+Based on a set of numbers, this aggregation function finds the minimum value out the the set of numbers.
+
+When Minimum flag is enabled for an attribute, it adds minimum value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
 
 ### Count
 
+This aggregation function counts the total number of records.
+
+When Count flag is enabled for an attribute, it adds count value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Large Text
+- Boolean
+- Array
+- Enum
+- Date
+- DateTime
+
+:::
+
 ### Sum
 
+Based on a set of numbers, this aggregation function finds the sum of all numbers.
+
+When Sum flag is enabled for an attribute, it adds sum value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
 ### Frequency
+
+This aggregation function creates a frequency table based of all values of the attribute.
+
+When Frequency flag is enabled for an attribute, it adds frequency value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Boolean
+- Enum
+
+:::
