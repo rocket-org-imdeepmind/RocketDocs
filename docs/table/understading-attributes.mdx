@@ -267,7 +267,59 @@ For example, if for `age` attribute, greaterThanEqual operation is enabled, then
 
 ### Equal
 
+Equal flag is enabled for an attribute, an optional query parameter is added that to all `GET` APIs.
+
+For example, if for `age` attribute, `equal` operation is enabled, then rocket will create an endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?equalAge={attributeValue}`.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Boolean
+- Enum
+- Date
+- DateTime
+
+:::
+
 ### One Of
+
+When OneOf flag is enabled for an attribute, an optional query parameter is added that to all `GET` APIs.
+
+For example, if for `gender` attribute, greaterThanEqual operation is enabled, then rocket will create an endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?oneOfGender={attributeValue1}&oneOfGender={attributeValue2}`.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Boolean
+- Enum
+- Date
+- DateTime
+
+:::
 
 ## Write Operations
 
