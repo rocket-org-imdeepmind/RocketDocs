@@ -331,9 +331,9 @@ For example, if there is already an index API for the attribute `id` and the `ge
 
 ### Editable Attributes
 
-When marked as editable, Rocket will create API to update data where this attribute value will be used to find the desired records.
+When marked as editable, Rocket will create an API to update data where this attribute value will be used to find the desired records to update.
 
-For example, if `name` attribute is marked as editable, then Rocket will create an endpoint as `PUT /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
+For example, if the `name` attribute is marked as editable, then Rocket will create an endpoint as `PUT /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
 
 :::info[Operation CheckList]
 
@@ -360,7 +360,7 @@ For example, if `name` attribute is marked as editable, then Rocket will create 
 
 When marked as deletable, this attribute is used as a key to delete data.
 
-For example, if `id` attribute is marked as deletable, then Rocket will create an endpoint as `DELETE /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
+For example, if the `id` attribute is marked as deletable, then Rocket will create an endpoint as `DELETE /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
 
 :::info[Operation CheckList]
 
