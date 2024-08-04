@@ -9,7 +9,7 @@ To create attributes for a table in your Rocket account, follow the steps outlin
 
 <div class="videowrapper" style={{ marginBottom: 10 }}>
   <iframe
-    src="https://www.youtube.com/embed/WZIbqYiwPGY?rel=0"
+    src="https://www.youtube.com/embed/qGU4SQ7uscQ?start=124"
     title="YouTube video 
       player"
     frameborder="0"
@@ -21,25 +21,40 @@ To create attributes for a table in your Rocket account, follow the steps outlin
 
 1. **Navigate to Your Database**: Log in to your Rocket account and select the desired database from the database selector located at the top left corner of the interface.
 
-2. **Access Tables**: Proceed by clicking on the "Tables" link situated in the left navigation pane.
+2. **Access Tables**: Click on the "Tables" link in the left navigation to proceed.
 
-3. **Select Table**: From the list of tables displayed, choose the specific table you wish to work with. Click on the respective table to open its details.
+3. **Select Table**: Choose the desired table from the tables list. Click on the table tile to open the table.
 
-4. **Create Attribute**: Upon accessing the table, locate and click on the "+ New Attribute" button to initiate the attribute creation process.
+4. **Create Attribute**: Upon accessing the table, click on the "+ New Attribute" button to initiate the attribute creation process.
 
 5. **Provide Necessary Details**: Upon clicking the button, you'll be directed to the New Attribute page. Here, furnish the following essential information to tailor your attribute:
 
    - **Basic Details**:
      - **Name**: Assign a descriptive name to your attribute for clear identification and efficient management.
      - **Description**: Provide a concise overview of the attribute's purpose within the database, aiding comprehension for team members and collaborators.
-   - **Field Type**:
+   - **Data Type**:
      - **Data Type**: Select the appropriate data type for the attribute.
      - **Enum Values**: If applicable, specify the enum options associated with the attribute.
      - **Optional**: Indicate whether the field is optional.
-   - **Field Configuration**:
+   - **Indexing**:
      - **Unique**: Specify if the field values must be unique.
      - **Indexable**: Determine whether the field should be indexed for faster retrieval.
+   - **Get Operations**:
      - **Searchable**: Indicate if the field should be included in search queries.
      - **Sortable**: Determine if the field values can be used for sorting purposes.
+     - **Less Than**: Add a lessThan query parameter for all GET APIs for this field.
+     - **Less Than Equal**: Add a lessThanEqual query parameter for all GET APIs for this field.
+     - **Greater Than**: Add a greaterThan query parameter for all GET APIs for this field.
+     - **Greater Than Equal**: Add a greaterThanEqual query parameter for all GET APIs for this field.
+     - **Equal**: Add a equal query parameter for all GET APIs for this field.
+     - **One Of**: Add a oneOf query parameter for all GET APIs for this field.
+   - **Write Operations**:
      - **Editable**: Specify whether the field can be used as index for data modification.
      - **Deletable**: Specify whether the field can be used as index for data deletion.
+   - **Aggregation Operations**:
+     - **Mean**: Find and add mean in the aggregation API.
+     - **Maximum**: Find and add maximum in the aggregation API.
+     - **Minimum**: Find and add minimum in the aggregation API.
+     - **Count**: Count the total number of documents and the value in the aggregation API.
+     - **Sum**: Find the total sum value of the attribute and add it in the aggregation API.
+     - **Frequency**: Generate a frequency table for the attribute and add it to the aggregation API.

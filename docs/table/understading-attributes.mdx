@@ -5,56 +5,530 @@ sidebar_position: 2
 
 # Understanding Attributes
 
-Attributes are pivotal to Rocket's functionality, dictating API creation and defining operational behavior. Rocket offers support for a diverse array of attributes configurations, facilitating API creation and management.
+Attributes are one of the most important concepts to understand in Rocket. Like SQL tables, attributes define the structure of tables and the operations needed for the attribute. For example, when you mark an attribute as searchable, Rocket automatically creates a search API.
 
-## Data Types Supported by Attributes
+Attributes support various configurations. Below, you can see all the possible configurations. The configurations are grouped into sections similar to how they are organized in Rocket's UI, making them easy to follow.
 
-Rocket supports various data types to cater to diverse application requirements:
+## Basic Details
 
-| Data Type  | Description                                                                                                                             | Length Constraints                         |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Integer    | This data type facilitates the storage of numeric values, encompassing both positive and negative integers, as well as decimal numbers. |                                            |
-| Boolean    | Boolean values, representing "true" and "false,"                                                                                        |                                            |
-| String     | Simple text strings, with length constraints for validation.                                                                            | Min Length: 0, Max Length: 255             |
-| Large-Text | For extensive textual content, with length restrictions for validation.                                                                 | Min Length: 0, Max Length: 4096            |
-| Array      | Arrays enable the storage of multiple items within a single attribute.                                                                  | Min Array Length: 0, Max Array Length: 100 |
-| Enum       | A specialized data type that allows variables to hold predefined constants.                                                             |                                            |
-| Date       | Date data type offers support for storing date values.                                                                                  |                                            |
-| Date-Time  | Date-Time type support both date and time values.                                                                                       |                                            |
+### Name
 
-## Optional and Unique Attribute Considerations
+Each attribute needs a unique name. This name can be used to create the API URL. Make sure to provide a simple name that follows Rocket's [entity](/misc#entity-names) name rules.
 
-Attributes within Rocket can be designated as optional or unique, influencing their behavior:
+### Description
 
-- **Optional Attributes**: When marked as optional, attributes accept null values.
-- **Unique Attributes**: Marking an attribute as unique ensures that only distinct values are accepted, preventing duplication.
+Each attribute needs a description. This description is used for documenting the API.
 
-## Attribute Operations
+## Data Type
 
-### Indexable Attributes
+### Data Type
 
-Designating an attribute as indexable empowers Rocket to automatically generate APIs for data retrieval based on that attribute. In cases where the attribute isn't unique, multiple data rows may be retrieved.
+Every attribute needs to be one of the data types supported by Rocket. Based on the data type, only certain types of data can be added and only certain operations are allowed.
 
-For example, if "id" serves as an indexable attribute within a table, Rocket generates an API endpoint as `/{databaseId}/{tableId}/id/{attributeValue}`.
+The following are the data types supported by Rocket:
+
+| Data Type  | Description                                                                                                                                  | Constraints                                |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Number     | Number data type supports both integer and floating point numbers.                                                                           | -                                          |
+| Boolean    | Boolean values, representing "true" and "false."                                                                                             | -                                          |
+| String     | Simple text strings, with length constraints for validation.                                                                                 | Min Length: 0, Max Length: 255             |
+| Large-Text | For extensive textual content, with length restrictions for validation.                                                                      | Min Length: 0, Max Length: 4096            |
+| Array      | Arrays enable the storage of multiple items within a single attribute. Array items can be of any data type. Arrays can have mixed data type. | Min Array Length: 0, Max Array Length: 100 |
+| Enum       | A specialized data type that allows variables to hold predefined constants. Only string values are supported in Enum.                        | -                                          |
+| Date       | Date data type offers support for storing date values.                                                                                       | -                                          |
+| Date-Time  | Date-Time type supports both date and time values.                                                                                           | -                                          |
+
+When the Data Type is Enum, an additional field called Enum Values also needs to be filled, which defines the possible values for the Enum.
+
+### Optional
+
+When a field is marked as optional, it accepts null values. Certain operations are disabled when attributes are marked as optional. Check the documentation for each attribute operation to understand the impact.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [x] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Large Text
+- Boolean
+- Array
+- Enum
+- Date
+- DateTime
+
+:::
+
+## Indexing
+
+### Unique
+
+Marking an attribute as unique ensures that only distinct values are accepted, preventing duplication. Certain operations change their behavior when an attribute is marked as unique.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [x] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Date
+- DateTime
+
+:::
+
+### Index
+
+When an attribute is marked as indexable, Rocket automatically creates an API to retrieve data based on the attribute.
+
+For example, if the `id` attribute is marked as indexable within a table, then Rocket generates an API endpoint as `/{databaseId}/{tableId}/id/{attributeValue}`. This API will return data where `id` is `{attributeValue}`. If the attribute is also marked as unique, then this API will return just a single element.
+
+:::info[Operation CheckList]
+
+- [x] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Enum
+- Date
+- DateTime
+
+:::
+
+## Query Operations
 
 ### Searchable Attributes
 
-Attributes marked as searchable prompt Rocket to create APIs facilitating data searches using the specified attribute.
+When an attribute is marked as searchable, Rocket will create an API for searching.
 
-For instance, selecting the "name" attribute results in an API endpoint of the format `/{databaseId}/{tableId}/search/name?query={attributeValue}`, allowing for targeted data searches.
+For instance, selecting the "name" attribute as searchable results in an API endpoint of the format `/{databaseId}/{tableId}/search/name?query={attributeValue}`. This API will search records based on the attribute `name`. The search operation is case-insensitive and checks for any substring match.
+
+:::info[Operation CheckList]
+
+- [x] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- String
+
+:::
+
+:::note
+
+For other data types, like Date or Number, partial matching cannot work. So to filter results for these data types, use the `equal` or `oneOf` operation.
+
+:::
 
 ### Sortable Attributes
 
-Attributes identified as sortable enable data sorting functionalities within Rocket. This inclusion prompts the addition of optional sorting query parameters to all generated GET APIs.
+When attributes are marked as sortable, Rocket will add an optional sorting query parameter in all `GET` APIs.
+
+For example, if there is already an index API for the attribute `id` and the `name` attribute is marked as sortable, then Rocket will create endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?sortByName={asc|desc}`. The API will have an optional query parameter `sortByName`. The default value for it is `asc`.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Enum
+- Date
+- DateTime
+
+:::
+
+### Less Than
+
+When an attribute is marked as `lessThan`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is less than the provided value.
+
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `lessThan`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?lessThanAge={attributeValue}`. The API will have an optional query parameter `lessThanAge`.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
+### Less Than Equal
+
+When an attribute is marked as `lessThanEqual`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is less than or equals the provided value.
+
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `lessThanEqual`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?lessThanEqualAge={attributeValue}`. The API will have an optional query parameter `lessThanEqualAge`.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
+### Greater Than
+
+When an attribute is marked as `greaterThan`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is greater than the provided value.
+
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `greaterThan`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?greaterThanAge={attributeValue}`. The API will have an optional query parameter `greaterThanAge`.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
+### Greater Than Equal
+
+When an attribute is marked as `greaterThanEqual`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is greater than or equals the provided value.
+
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `greaterThanEqual`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?greaterThanEqualAge={attributeValue}`. The API will have an optional query parameter `greaterThanEqualAge`.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
+### Equal
+
+When an attribute is marked as `equal`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is equals the provided value.
+
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `equal`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?equalAge={attributeValue}`. The API will have an optional query parameter `equalAge`.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Boolean
+- Enum
+- Date
+- DateTime
+
+:::
+
+### One Of
+
+When an attribute is marked as `oneOf`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is one of the provided value.
+
+For example, if there is already an index API for the attribute `id` and the `gender` attribute is marked as `oneOf`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?oneOfGender={attributeValue1}&oneOfGender={attributeValue2}`. The API will have an optional query parameter `equalAge` that accept an array of numbers.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [x] It adds a new query parameter to existing APIs
+- [x] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [x] It is optional
+- [x] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Boolean
+- Enum
+- Date
+- DateTime
+
+:::
+
+## Write Operations
 
 ### Editable Attributes
 
-Determining if an attribute can be utilized for data updating, the editable attribute's presence influences API generation. In cases where uniqueness isn't assured, updates may affect multiple data rows.
+When marked as editable, Rocket will create an API to update data where this attribute value will be used to find the desired records to update.
 
-APIs are structured as follows: `PUT /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
+For example, if the `name` attribute is marked as editable, then Rocket will create an endpoint as `PUT /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
+
+:::info[Operation CheckList]
+
+- [x] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Enum
+- Date
+- DateTime
+
+:::
 
 ### Deletable Attributes
 
-Indicating whether an attribute can be employed for data deletion, the deletable attribute plays a pivotal role in API construction. Should uniqueness not be guaranteed, deletions may impact multiple data rows.
+When marked as deletable, this attribute is used as a key to delete data.
 
-APIs adhere to the format: `DELETE /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
+For example, if the `id` attribute is marked as deletable, then Rocket will create an endpoint as `DELETE /{databaseId}/{tableId}/{attributeName}/{attributeValue}`.
+
+:::info[Operation CheckList]
+
+- [x] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Enum
+- Date
+- DateTime
+
+:::
+
+## Aggregate Functions
+
+Rocket supports multiple type of aggregate functions. These functions perform some calculation on multiple values and returns a computed value.
+
+### Mean
+
+Based on a set of numbers, this aggregation function finds the [mean](https://en.wikipedia.org/wiki/Mean) of it.
+
+When Mean flag is enabled for an attribute, it adds mean value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
+### Maximum
+
+Based on a set of numbers, this aggregation function finds the maximum value out the the set of numbers.
+
+When Maximum flag is enabled for an attribute, it adds maximum value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
+### Minimum
+
+Based on a set of numbers, this aggregation function finds the minimum value out the the set of numbers.
+
+When Minimum flag is enabled for an attribute, it adds minimum value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
+### Count
+
+This aggregation function counts the total number of records.
+
+When Count flag is enabled for an attribute, it adds count value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+- String
+- Large Text
+- Boolean
+- Array
+- Enum
+- Date
+- DateTime
+
+:::
+
+### Sum
+
+Based on a set of numbers, this aggregation function finds the sum of all numbers.
+
+When Sum flag is enabled for an attribute, it adds sum value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Number
+
+:::
+
+### Frequency
+
+This aggregation function creates a frequency table based of all values of the attribute.
+
+When Frequency flag is enabled for an attribute, it adds frequency value to the `aggregate` API.
+
+:::info[Operation CheckList]
+
+- [ ] It creates new API
+- [ ] It adds a new query parameter to existing APIs
+- [ ] It change the behavior of other APIs
+- [ ] It change other supported operations
+- [ ] It is optional
+- [ ] The result from this API is paginated
+
+:::
+
+:::info[Supported DataType]
+
+- Boolean
+- Enum
+
+:::

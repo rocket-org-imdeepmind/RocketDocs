@@ -7,6 +7,18 @@ sidebar_position: 1
 
 In the world of Rocket, databases serve as the foundation of projects, encompassing everything, including tables, data, APIs, and their respective documentation.
 
+<div class="videowrapper" style={{ marginBottom: 10 }}>
+  <iframe
+    src="https://www.youtube.com/embed/zEqLPQj9KeM?rel=0"
+    title="YouTube video 
+      player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; 
+      encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+
 Let's explore the essential functionalities and features of databases within Rocket:
 
 ## Understanding the Database Dashboard
@@ -34,16 +46,16 @@ Here is a list of different operations supported by Rocket.
 
 The table below outlines the field rules for database configuration:
 
-| Field               | Description                                       | Data Type  | Minimum Length | Maximum Length | Valid Options                        | Default Value | Is Optional | Extra Details                          |
-| ------------------- | ------------------------------------------------- | ---------- | -------------- | -------------- | ------------------------------------ | ------------- | ----------- | -------------------------------------- |
-| Name                | Name of the Database                              | string     | 2              | 25             | -                                    | -             | No          | -                                      |
-| Description         | Description of the Database                       | large-text | 2              | 255            | -                                    | -             | No          | -                                      |
-| Tags                | Tags for categorizing databases                   | string[]   | 2              | 25             | -                                    | -             | No          | Minimum 1 tag, maximum 5 tags          |
-| Version             | Version of the database                           | string     | 2              | 25             | -                                    | -             | No          | -                                      |
-| Stage               | Stage of the database                             | string     | -              | -              | 'dev', 'qa', 'test', 'prod', 'stage' | -             | No          | -                                      |
-| Enable API Key Auth | Enable API Key authentication for the database    | boolean    | -              | -              | true, false                          | true          | No          | -                                      |
-| Username            | Username for database access                      | string     | 2              | 25             | -                                    | -             | Yes         | Mandatory when API Key auth is enabled |
-| Password            | Password for database access                      | string     | 2              | 25             | -                                    | -             | Yes         | Mandatory when API Key auth is enabled |
-| Enable RocketAuth   | Enable RocketAuth authentication for the database | boolean    | -              | -              | true, false                          | true          | No          | -                                      |
+| Field               | Description                                       | Data Type  | Minimum Length | Maximum Length | Valid Options                        | Default Value | Is Optional | Extra Details                                          |
+| ------------------- | ------------------------------------------------- | ---------- | -------------- | -------------- | ------------------------------------ | ------------- | ----------- | ------------------------------------------------------ |
+| Name                | Name of the Database                              | string     | 2              | 25             | -                                    | -             | No          | Needed to be a valid [entity](/misc#entity-names) name |
+| Description         | Description of the Database                       | large-text | 2              | 255            | -                                    | -             | No          | -                                                      |
+| Tags                | Tags for categorizing databases                   | string[]   | 2              | 25             | -                                    | -             | No          | Minimum 1 tag, maximum 5 tags                          |
+| Version             | Version of the database                           | string     | 2              | 25             | -                                    | -             | No          | -                                                      |
+| Stage               | Stage of the database                             | string     | -              | -              | 'dev', 'qa', 'test', 'prod', 'stage' | -             | No          | -                                                      |
+| Enable API Key Auth | Enable API Key authentication for the database    | boolean    | -              | -              | true, false                          | true          | No          | -                                                      |
+| Username            | Username for database access                      | string     | 2              | 25             | -                                    | -             | Yes         | Mandatory when API Key auth is enabled                 |
+| Password            | Password for database access                      | string     | 2              | 25             | -                                    | -             | Yes         | Mandatory when API Key auth is enabled                 |
+| Enable RocketAuth   | Enable RocketAuth authentication for the database | boolean    | -              | -              | true, false                          | true          | No          | -                                                      |
 
 These field rules provide comprehensive guidelines for configuring databases within Rocket.
