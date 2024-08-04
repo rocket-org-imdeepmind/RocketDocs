@@ -72,7 +72,7 @@ When a field is marked as optional, it accepts null values. Certain operations a
 
 ### Unique
 
-Marking an attribute as unique ensures that only distinct values are accepted, preventing duplication. Certain operations changes their behavior when marking as unique.
+Marking an attribute as unique ensures that only distinct values are accepted, preventing duplication. Certain operations change their behavior when an attribute is marked as unique.
 
 :::info[Operation CheckList]
 
@@ -96,9 +96,9 @@ Marking an attribute as unique ensures that only distinct values are accepted, p
 
 ### Index
 
-Designating an attribute as indexable empowers Rocket to automatically generate APIs for data retrieval based on that attribute. In cases where the attribute isn't unique, multiple data rows may be retrieved.
+When an attribute is marked as indexable, Rocket automatically creates an API to retrieve data based on the attribute.
 
-For example, if "id" serves as an indexable attribute within a table, Rocket generates an API endpoint as `/{databaseId}/{tableId}/id/{attributeValue}`.
+For example, if the `id` attribute is marked as indexable within a table, then Rocket generates an API endpoint as `/{databaseId}/{tableId}/id/{attributeValue}`. This API will return data where `id` is `{attributeValue}`. If the attribute is also marked as unique, then this API will return just a single element.
 
 :::info[Operation CheckList]
 
@@ -125,9 +125,9 @@ For example, if "id" serves as an indexable attribute within a table, Rocket gen
 
 ### Searchable Attributes
 
-When attributes are marked as searchable, Rocket will create APIs for data searches using the specified attribute.
+When an attribute is marked as searchable, Rocket will create an API for searching.
 
-For instance, selecting the "name" attribute results in an API endpoint of the format `/{databaseId}/{tableId}/search/name?query={attributeValue}`, allowing for targeted data searches.
+For instance, selecting the "name" attribute as searchable results in an API endpoint of the format `/{databaseId}/{tableId}/search/name?query={attributeValue}`. This API will search records based on the attribute `name`. The search operation is case-insensitive and checks for any substring match.
 
 :::info[Operation CheckList]
 
@@ -146,11 +146,17 @@ For instance, selecting the "name" attribute results in an API endpoint of the f
 
 :::
 
+:::note
+
+For other data types, like Date or Number, partial matching cannot work. So to filter results for these data types, use the `equal` or `oneOf` operation.
+
+:::
+
 ### Sortable Attributes
 
-When attributes identified as sortable, Rocket will add an optional sorting query parameter in all `GET` APIs.
+When attributes are marked as sortable, Rocket will add an optional sorting query parameter in all `GET` APIs.
 
-For example, if `name` attribute is marked as sortable, then rocket will create endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?sortByName={asc|desc}`.
+For example, if there is already an index API for the attribute `id` and the `name` attribute is marked as sortable, then Rocket will create endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?sortByName={asc|desc}`. The API will have an optional query parameter `sortByName`. The default value for it is `asc`.
 
 :::info[Operation CheckList]
 
@@ -175,9 +181,9 @@ For example, if `name` attribute is marked as sortable, then rocket will create 
 
 ### Less Than
 
-When LessThan flag is enabled for an attribute, an optional query parameter is added that to all `GET` APIs.
+When an attribute is marked as `lessThan`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is less than the provided value.
 
-For example, if for `age` attribute, lessThan operation is enabled, then rocket will create an endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?lessThanAge={attributeValue}`.
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `lessThan`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?lessThanAge={attributeValue}`. The API will have an optional query parameter `lessThanAge`.
 
 :::info[Operation CheckList]
 
@@ -198,9 +204,9 @@ For example, if for `age` attribute, lessThan operation is enabled, then rocket 
 
 ### Less Than Equal
 
-When LessThanEqual flag is enabled for an attribute, an optional query parameter is added that to all `GET` APIs.
+When an attribute is marked as `lessThanEqual`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is less than or equals the provided value.
 
-For example, if for `age` attribute, lessThanEqual operation is enabled, then rocket will create an endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?lessThanEqualAge={attributeValue}`.
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `lessThanEqual`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?lessThanEqualAge={attributeValue}`. The API will have an optional query parameter `lessThanEqualAge`.
 
 :::info[Operation CheckList]
 
@@ -221,9 +227,9 @@ For example, if for `age` attribute, lessThanEqual operation is enabled, then ro
 
 ### Greater Than
 
-When GreaterThan flag is enabled for an attribute, an optional query parameter is added that to all `GET` APIs.
+When an attribute is marked as `greaterThan`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is greater than the provided value.
 
-For example, if for `age` attribute, greaterThan operation is enabled, then rocket will create an endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?greaterThan={attributeValue}`.
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `greaterThan`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?greaterThanAge={attributeValue}`. The API will have an optional query parameter `greaterThanAge`.
 
 :::info[Operation CheckList]
 
@@ -244,9 +250,9 @@ For example, if for `age` attribute, greaterThan operation is enabled, then rock
 
 ### Greater Than Equal
 
-When GreaterThanEqual flag is enabled for an attribute, an optional query parameter is added that to all `GET` APIs.
+When an attribute is marked as `greaterThanEqual`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is greater than or equals the provided value.
 
-For example, if for `age` attribute, greaterThanEqual operation is enabled, then rocket will create an endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?greaterThanEqual={attributeValue}`.
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `greaterThanEqual`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?greaterThanEqualAge={attributeValue}`. The API will have an optional query parameter `greaterThanEqualAge`.
 
 :::info[Operation CheckList]
 
@@ -267,9 +273,9 @@ For example, if for `age` attribute, greaterThanEqual operation is enabled, then
 
 ### Equal
 
-Equal flag is enabled for an attribute, an optional query parameter is added that to all `GET` APIs.
+When an attribute is marked as `equal`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is equals the provided value.
 
-For example, if for `age` attribute, `equal` operation is enabled, then rocket will create an endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?equalAge={attributeValue}`.
+For example, if there is already an index API for the attribute `id` and the `age` attribute is marked as `equal`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?equalAge={attributeValue}`. The API will have an optional query parameter `equalAge`.
 
 :::info[Operation CheckList]
 
@@ -295,9 +301,9 @@ For example, if for `age` attribute, `equal` operation is enabled, then rocket w
 
 ### One Of
 
-When OneOf flag is enabled for an attribute, an optional query parameter is added that to all `GET` APIs.
+When an attribute is marked as `oneOf`, an optional query parameter is added to all `GET` APIs. When a value for this parameter is provided, Rocket adds a filter that returns results where the value of the attribute is one of the provided value.
 
-For example, if for `gender` attribute, greaterThanEqual operation is enabled, then rocket will create an endpoints as `/{databaseId}/{tableId}/id/{attributeValue}?oneOfGender={attributeValue1}&oneOfGender={attributeValue2}`.
+For example, if there is already an index API for the attribute `id` and the `gender` attribute is marked as `oneOf`, then Rocket will create an endpoint as `/{databaseId}/{tableId}/id/{attributeValue}?oneOfGender={attributeValue1}&oneOfGender={attributeValue2}`. The API will have an optional query parameter `equalAge` that accept an array of numbers.
 
 :::info[Operation CheckList]
 
