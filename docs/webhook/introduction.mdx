@@ -4,3 +4,25 @@ sidebar_position: 1
 ---
 
 # Introduction
+
+Webhooks are automated messages sent from one application to another when an event occurs. They provide real-time data updates and trigger actions in other systems. In Rocket, webhooks can be configured for every type of API.
+
+When you configure a webhook in a Rocket API, Rocket automatically makes a `POST` call to the configured webhook every time the API is called and successfully resolved.
+
+Rocket also passes a variety of information with the webhook call as the body parameter. Below is the information that Rocket sends in the webhook call.
+
+```js
+const body = {
+  body: request.body,
+  params: request.params,
+  query: request.query,
+  resp: payload,
+};
+```
+
+- `request.body`: Represents the body of the original request.
+- `request.params`: Represents the path parameters of the original request.
+- `request.query`: Represents the query parameters of the original request.
+- `payload`: Represents the response from the API.
+
+By configuring webhooks, you can ensure that your systems stay in sync and trigger necessary actions automatically when specific events occur in Rocket.
