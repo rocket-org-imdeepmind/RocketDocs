@@ -5,6 +5,8 @@ sidebar_position: 1
 
 # Introduction
 
+Adding data manually to tables can often be cumbersome and time-consuming. To streamline this process, Rocket offers a Synthetic Data Generator. This tool allows you to generate large volumes of data that closely resemble real-world data.
+
 <div class="videowrapper">
   <iframe
     src="https://www.youtube.com/embed/j_Y1OtP-J9U?start=0"
@@ -16,3 +18,21 @@ sidebar_position: 1
     allowfullscreen
   ></iframe>
 </div>
+
+Rocket supports two methods for data generation: FakerJS and a custom data generator. For most data types, FakerJS is sufficient—users simply need to specify which FakerJS function to use. However, for more complex data types, you'll need to utilize Rocket's custom data generator.
+
+## Synthetic Data Operations
+
+- **Configuring the Data Generator**: For instructions on configuring the Data Generator, refer to [this guide](/synthetic-data/configuring-synthetic-data-attributes).
+- **Generating Data**: To learn how to generate data, check out [this guide](/synthetic-data/generating-synthetic-data).
+
+## Field Rules
+
+The table below outlines the rules for documenting APIs:
+
+| Field                   | Description                                      | Data Type | Minimum Length | Maximum Length | Valid Options                                       | Default Value | Is Optional | Extra Details                                                               |
+| ----------------------- | ------------------------------------------------ | --------- | -------------- | -------------- | --------------------------------------------------- | ------------- | ----------- | --------------------------------------------------------------------------- |
+| Data Generator          | Type of the generator                            | enum      | -              | -              | FakerJS, Custom                                     | -             | No          | -                                                                           |
+| Generator Group         | Group of the generator                           | enum      | -              | -              | Options vary based on the selected data generator   | -             | No          | -                                                                           |
+| Generator Method        | Method used by the generator                     | enum      | -              | -              | Options vary based on the selected generator group  | -             | No          | -                                                                           |
+| Generator Data Property | Specific property in the generator’s output data | enum      | -              | -              | Options vary based on the selected generator method | -             | Yes         | Users might need to provide a value based on the selected generator method. |
