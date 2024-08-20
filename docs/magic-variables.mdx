@@ -1,0 +1,59 @@
+---
+title: Magic Variables
+sidebar_position: 10
+---
+
+# Magic Variables
+
+Rocket supports Magic Variables, which can be used in various places throughout Rocket. These variables hold special values and are only available if RocketAuth is enabled for your database. Here are the Magic Variables supported in Rocket:
+
+- `@@authType`: Indicates the type of account (e.g., email-password, Google-account, passwordless-account).
+- `@@canRead`: Indicates whether the user can perform read operations.
+- `@@canWrite`: Indicates whether the user can perform write operations.
+- `@@databaseId`: ID of the database.
+- `@@email`: Email address of the logged-in user.
+- `@@userId`: ID of the logged-in user.
+
+## Where Can Magic Variables Be Used?
+
+Magic Variables can be used in various places within Rocket, including:
+
+- **RocketQuery**: Directly in the Rocket UI or via RocketQuery APIs.
+- **Query Parameters**: In all APIs.
+- **Body Parameters**: In all APIs.
+- **Data Operations**: In the Rocket UI for adding data operations.
+
+## Examples
+
+### In request body
+
+If you're adding data to a table, the request body might look like this:
+
+```json
+{
+  "id": 1,
+  "title": "Title of the post",
+  "content": "Content of the post",
+  "ownerId": "@@userId"
+}
+```
+
+In this example, `@@userId` will be replaced with the ID of the logged-in user.
+
+### In request query
+
+If you want to make a `GET` request with a query parameter `equalOwnerId`, the URL might look like this:
+
+```url
+/attribute-api/1234-database-id-6789/1234-table-id-6789?equalOwnerId=@@userId
+```
+
+Here, `@@userId` will be replaced with the ID of the logged-in user.
+
+:::info
+Magic Variables are only utilized if RocketAuth is enabled and the API user is logged in.
+:::
+
+:::info
+If RocketAuth is not enabled or the provided Magic Variable is invalid, Rocket will not generate an error. Instead, it will treat the variable name as its value. For example, if `@@wrong` is used as a query parameter, Rocket will ignore the variable and treat `@@wrong` as a literal value.
+:::
